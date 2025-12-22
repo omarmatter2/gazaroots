@@ -1,0 +1,258 @@
+/* =========================================================
+   Global Reset – Override Bootstrap Defaults
+   Author: Custom Reset
+   ========================================================= */
+
+/* -----------------------------
+   Box sizing
+------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* -----------------------------
+   Remove default margin & padding
+------------------------------ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* -----------------------------
+   Body
+------------------------------ */
+body {
+  line-height: 1.5;
+  background: transparent;
+}
+
+/* -----------------------------
+   Lists
+------------------------------ */
+ol,
+ul {
+  list-style: none;
+}
+
+/* -----------------------------
+   Links
+------------------------------ */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  box-shadow: none;
+}
+
+/* -----------------------------
+   Images
+------------------------------ */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* -----------------------------
+   Buttons – reset Bootstrap
+------------------------------ */
+button,
+.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 0;
+}
+
+button:hover,
+button:focus,
+button:active,
+.btn:hover,
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* -----------------------------
+   Forms
+------------------------------ */
+input,
+textarea,
+select {
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none !important;
+  border-radius: 0;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+
+/* Remove bootstrap focus ring */
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  box-shadow: none !important;
+  border-color: inherit;
+}
+
+/* -----------------------------
+   Checkbox / Radio
+------------------------------ */
+.form-check-input {
+  box-shadow: none !important;
+}
+
+.form-check-input:focus,
+.form-check-input:checked {
+  box-shadow: none !important;
+}
+
+/* -----------------------------
+   Focus-visible (accessibility)
+------------------------------ */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: none;
+}
+
+/* -----------------------------
+   Tables
+------------------------------ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* -----------------------------
+   Remove Bootstrap shadows globally
+------------------------------ */
+.shadow,
+.shadow-sm,
+.shadow-lg {
+  box-shadow: none !important;
+}
+
+/* -----------------------------
+   Remove Bootstrap rounded corners
+------------------------------ */
+.rounded,
+.rounded-1,
+.rounded-2,
+.rounded-3,
+.rounded-circle,
+.rounded-pill {
+  border-radius: 0 !important;
+}
+
+/* -----------------------------
+   Transitions (optional)
+------------------------------ */
+/* * {
+  transition: none !important;
+} */
