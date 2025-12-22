@@ -49,9 +49,18 @@
                 <!-- Right actions -->
                 <div class="gr-navbar__actions">
                     @foreach($buttonItems as $button)
-                        <a class="btn gr-btn {{ $button->css_class }}" href="{{ $button->getLink() }}" target="{{ $button->target }}">
-                            {{ $button->getTranslation('title', 'en') }}
-                        </a>
+                        @if(str_starts_with($button->url ?? '', '#'))
+                            {{-- Modal trigger button --}}
+                            <button type="button" class="btn gr-btn {{ $button->css_class }}"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="{{ $button->url }}">
+                                {{ $button->getTranslation('title', 'en') }}
+                            </button>
+                        @else
+                            <a class="btn gr-btn {{ $button->css_class }}" href="{{ $button->getLink() }}" target="{{ $button->target }}">
+                                {{ $button->getTranslation('title', 'en') }}
+                            </a>
+                        @endif
                     @endforeach
 
                     <div class="gr-navbar__meta">

@@ -17,6 +17,8 @@ use App\Http\Controllers\Website\ArticleController as WebsiteArticleController;
 use App\Http\Controllers\Website\CategoryController as WebsiteCategoryController;
 use App\Http\Controllers\Website\SubscriberController as WebsiteSubscriberController;
 use App\Http\Controllers\Website\WaterProjectController as WebsiteWaterProjectController;
+use App\Http\Controllers\Website\DonationController as WebsiteDonationController;
+use App\Http\Controllers\Website\AssistanceRequestController as WebsiteAssistanceRequestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +40,12 @@ Route::get('/category/{slug}', [WebsiteCategoryController::class, 'show'])->name
 // Water Projects
 Route::get('/water', [WebsiteWaterProjectController::class, 'index'])->name('water.index');
 Route::get('/water-project/{slug}', [WebsiteWaterProjectController::class, 'show'])->name('water-project.show');
+
+// Donation (AJAX)
+Route::post('/donate', [WebsiteDonationController::class, 'store'])->name('donate');
+
+// Assistance Request (AJAX)
+Route::post('/assistance-request', [WebsiteAssistanceRequestController::class, 'store'])->name('assistance-request.store');
 
 Route::get('/testimonials', function() { return redirect()->route('home'); })->name('testimonials.index');
 Route::get('/request-help', function() { return redirect()->route('home'); })->name('request-help');
