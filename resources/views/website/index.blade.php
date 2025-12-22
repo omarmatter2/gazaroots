@@ -245,34 +245,7 @@
 
 
 
-    <section class="gr-subscribe">
-      <div class="container">
-        <div class="gr-subscribe__box">
-          <h2 class="gr-subscribe__title">
-            Subscribe to Gaza Roots News
-          </h2>
-
-          <p class="gr-subscribe__desc">
-            Enter your email to receive the latest updates and breaking news from Gaza
-          </p>
-
-          @if(session('success'))
-          <div class="alert alert-success mb-3">{{ session('success') }}</div>
-          @endif
-
-          <form class="gr-subscribe__form" action="{{ route('subscribe') }}" method="POST">
-            @csrf
-            <input type="email" name="email" placeholder="Enter your email" class="gr-subscribe__input" required />
-
-            <button type="submit" class="gr-subscribe__btn">
-            </button>
-          </form>
-          @error('email')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
-      </div>
-    </section>
+    <x-website.subscribe-form />
 
 
 

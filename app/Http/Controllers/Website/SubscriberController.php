@@ -18,7 +18,8 @@ class SubscriberController extends Controller
 
         Subscriber::create($validated);
 
-        if ($request->ajax()) {
+        // Check if request expects JSON (AJAX/fetch)
+        if ($request->expectsJson() || $request->ajax()) {
             return response()->json([
                 'success' => true,
                 'message' => 'Thank you for subscribing to our newsletter!'
