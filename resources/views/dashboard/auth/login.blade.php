@@ -89,8 +89,8 @@
                     <div class="flex items-center justify-between gap-1">
                         <label class="kt-form-label font-normal text-mono" for="password">
                             Password
-                        </label>
-                       
+                     </label>
+
                     </div>
                     <div class="kt-input" data-kt-toggle-password="true">
                         <input id="password"
