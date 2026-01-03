@@ -45,19 +45,22 @@ body {
 
 .gr-navbar__brand {
   padding: 0;
-  display: inline-flex;
+  margin: 0;
+  /* display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 80px;
   width: 90px;
   background: #ffffff;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08); */
 }
 
 .gr-navbar__brand img {
-  width: 52px;
-  height: 52px;
+  /* width: 52px;
+  height: 52px; */
+  height: 100%;
   object-fit: contain;
+  border-radius: 50%;
 }
 
 .gr-navbar__collapse {
