@@ -163,5 +163,17 @@
             </span>
         </a>
     </div>
+
+    <!-- Social Media -->
+    <div class="kt-menu-item">
+        <a class="kt-menu-link flex items-center grow border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px] {{ request()->routeIs('admin.social-media.*') ? 'kt-menu-item-active bg-accent/60 rounded-lg' : '' }}" href="{{ route('admin.social-media.index') }}" tabindex="0">
+            <span class="kt-menu-icon items-start text-muted-foreground w-[20px]">
+                <i class="ki-filled ki-share text-lg"></i>
+            </span>
+            <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
+                Social Media
+            </span>
+        </a>
+    </div>
 </div>
 

@@ -2,7 +2,7 @@
     <div class="kt-sidebar-header hidden lg:flex items-center relative justify-between px-3 lg:px-6 shrink-0" id="sidebar_header">
         <a class="dark:hidden" href="{{ route('admin.dashboard') }}">
             <span class="default-logo text-lg font-bold text-primary">
-                <img src="{{ asset('assets/media/rootsLogo.jpeg') }}" alt="Logo" class="h-10 w-auto" >
+                <img src="{{ asset('assets/media/rootsLogo.jpeg') }}" alt="Logo" class="h-10 w-auto"  style="height:90px ; object-fit: contain; border-radius: 50%; margin-top: 10px;">
             </span>
             <span class="small-logo text-lg font-bold text-primary hidden">GR</span>
         </a>

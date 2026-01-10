@@ -144,7 +144,7 @@
 
         <div class="gr-title">
           <h2>Water Projects</h2>
-          <a href="#">View Details</a>
+          <a href="{{ route('water.index') }}">View All</a>
         </div>
 
 
@@ -153,11 +153,11 @@
             @if($waterProjects->count() > 0)
             @php $mainProject = $waterProjects->first(); @endphp
             <div class="gr-blog gr-blog__secondary">
-              <a href="#" class="gr-blog__img gr-blog__opacity">
+              <a href="{{ route('water-project.show', $mainProject->slug) }}" class="gr-blog__img gr-blog__opacity">
                 <img src="{{ $mainProject->image ? asset('storage/' . $mainProject->image) : asset('website/assets/img/sec_post.svg') }}" alt="">
               </a>
               <div class="gr-blog__text">
-                <a href="#" class="h3">{{ $mainProject->getTranslation('title', 'en') }}</a>
+                <a href="{{ route('water-project.show', $mainProject->slug) }}" class="h3">{{ $mainProject->getTranslation('title', 'en') }}</a>
 
                 <p>{{ Str::limit($mainProject->getTranslation('description', 'en'), 120) }}</p>
               </div>
@@ -170,15 +170,14 @@
           <div class="col-lg-4">
             <div class="gr-title">
               <h2>The latest water wells that have been drilled</h2>
-              <!-- <a href="#">View Details</a> -->
             </div>
             @foreach($waterProjects->skip(1)->take(3) as $project)
             <div class="gr-blog gr-blog__inline">
-              <a href="#" class="gr-blog__img">
+              <a href="{{ route('water-project.show', $project->slug) }}" class="gr-blog__img">
                 <img src="{{ $project->image ? asset('storage/' . $project->image) : asset('website/assets/img/inline_post1.svg') }}" alt="">
               </a>
               <div class="gr-blog__text">
-                <a href="#" class="h3">{{ $project->getTranslation('title', 'en') }}</a>
+                <a href="{{ route('water-project.show', $project->slug) }}" class="h3">{{ $project->getTranslation('title', 'en') }}</a>
               </div>
             </div>
             @endforeach
@@ -266,7 +265,7 @@
           <li><a href="#" class="active">CONTRIBUTORS</a></li>
           <li><a href="#">ARTS</a></li>
           <li><a href="#">SOLIDARITY</a></li>
-          <li><a href="#">REQUEST HELP</a></li>
+          <li><a href="#assistModal">REQUEST HELP</a></li>
           <li><a href="#">ABOUT US</a></li>
         </ul>
 
@@ -274,30 +273,18 @@
         <p class="gr-footer__social-title">Follow us on Social Media</p>
 
         <div class="gr-footer__social">
-          <a href="#" class="gr-footer__social-link" aria-label="Instagram">
-            <img src="{{ asset('website/assets/img/social/instagram.svg') }}" alt="">
-            <img src="{{ asset('website/assets/img/social/instagram-hover.svg') }}" alt="">
-          </a>
-
-          <a href="#" class="gr-footer__social-link" aria-label="TikTok">
-            <img src="{{ asset('website/assets/img/social/tiktok.svg') }}" alt="">
-            <img src="{{ asset('website/assets/img/social/tiktok-hover.svg') }}" alt="">
-          </a>
-
-          <a href="#" class="gr-footer__social-link" aria-label="X">
-            <img src="{{ asset('website/assets/img/social/twitter.svg') }}" alt="">
-            <img src="{{ asset('website/assets/img/social/twitter-hover.svg') }}" alt="">
-          </a>
-
-          <a href="#" class="gr-footer__social-link" aria-label="Telegram">
-            <img src="{{ asset('website/assets/img/social/telegram.svg') }}" alt="">
-            <img src="{{ asset('website/assets/img/social/telegram-hover.svg') }}" alt="">
-          </a>
-
-          <a href="#" class="gr-footer__social-link" aria-label="Snapchat">
-            <img src="{{ asset('website/assets/img/social/snapchat.svg') }}" alt="">
-            <img src="{{ asset('website/assets/img/social/snapchat-hover.svg') }}" alt="">
-          </a>
+          @forelse($socialMedia as $social)
+            <a href="{{ $social->url }}" class="gr-footer__social-link" aria-label="{{ $social->platform }}" target="_blank" rel="noopener noreferrer">
+              <img src="{{ $social->image_url }}" alt="{{ $social->platform }}">
+              <img src="{{ $social->hover_image_url }}" alt="">
+            </a>
+          @empty
+            <!-- Fallback to default social media links if none configured -->
+            <a href="#" class="gr-footer__social-link" aria-label="Instagram">
+              <img src="{{ asset('website/assets/img/social/instagram.svg') }}" alt="">
+              <img src="{{ asset('website/assets/img/social/instagram-hover.svg') }}" alt="">
+            </a>
+          @endforelse
         </div>
 
         <!-- Divider -->

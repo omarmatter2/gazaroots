@@ -5,7 +5,7 @@
     <div class="container">
         <div class="gr-subscribe__box">
             <h2 class="gr-subscribe__title">
-                Subscribe to Gaza Roots News
+                Subscribe to Gaza Roots 
             </h2>
 
             <p class="gr-subscribe__desc">

@@ -77,6 +77,7 @@ class CategoryController extends Controller
         $category->slug = Str::slug($request->input('name.en'));
         $category->is_active = $request->boolean('is_active');
         $category->order = $request->input('order', 0);
+        $category->show_on_home = $request->boolean('show_on_home');
 
         if ($request->hasFile('image')) {
             $category->image = $request->file('image')->store('categories', 'public');

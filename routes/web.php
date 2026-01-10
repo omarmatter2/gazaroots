@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\WaterProjectController;
 use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\Dashboard\NavItemController;
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Website\ArticleController as WebsiteArticleController;
@@ -87,6 +88,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Navigation Management
         Route::resource('nav-items', NavItemController::class);
+
+        // Social Media Management
+        Route::resource('social-media', SocialMediaController::class)->parameters(['social-media' => 'socialMedia']);
     });
 });
 

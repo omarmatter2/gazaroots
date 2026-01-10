@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\SocialMedia;
 use App\Models\WaterProject;
 
 class WaterProjectController extends Controller
@@ -37,7 +38,9 @@ class WaterProjectController extends Controller
         $project = WaterProject::where('slug', $slug)
             ->where('is_active', true)
             ->firstOrFail();
-
+       $socialMedia = SocialMedia::where('is_active', true)
+            ->orderBy('order')
+            ->get();
         // Other projects
         $otherProjects = WaterProject::where('is_active', true)
             ->where('id', '!=', $project->id)
@@ -45,7 +48,7 @@ class WaterProjectController extends Controller
             ->take(3)
             ->get();
 
-        return view('website.water-projects.show', compact('project', 'otherProjects'));
+        return view('website.water-projects.show', compact('project', 'otherProjects', 'socialMedia'));
     }
 }
 

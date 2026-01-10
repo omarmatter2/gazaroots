@@ -66,7 +66,7 @@
 
 
               <!-- Share -->
-              <div class="gr-post__share">
+              {{-- <div class="gr-post__share">
                 <span class="gr-post__share-label">Share via</span>
 
                 <div class="gr-post__share-icons">
@@ -86,7 +86,7 @@
                     <img src="{{ asset('website/assets/img/icons/link.svg') }}" alt="Copy Link">
                   </a>
                 </div>
-              </div>
+              </div> --}}
 
               <!-- Highlight box -->
               <section class="gr-post-highlight">

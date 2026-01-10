@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\SocialMedia;
 use App\Models\Testimonial;
 use App\Models\WaterProject;
 
@@ -56,13 +57,17 @@ class HomeController extends Controller
         // Latest water projects
         $waterProjects = WaterProject::where('is_active', true)
             ->orderBy('created_at', 'desc')
-            ->take(3)
             ->get();
 
         // Testimonials
         $testimonials = Testimonial::where('is_active', true)
             ->orderBy('order')
             ->take(6)
+            ->get();
+
+        // Social Media Links
+        $socialMedia = SocialMedia::where('is_active', true)
+            ->orderBy('order')
             ->get();
 
         return view('website.index', compact(
@@ -72,7 +77,8 @@ class HomeController extends Controller
             'categories',
             'waterStats',
             'waterProjects',
-            'testimonials'
+            'testimonials',
+            'socialMedia'
         ));
     }
 }
