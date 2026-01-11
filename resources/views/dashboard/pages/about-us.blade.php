@@ -82,7 +82,7 @@
 @endpush
 
 @push('scripts')
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/yxt0wjkty6bsfgmrdyl4x94ekcpegaa7u0qpav1izndh4d2m/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
         selector: '.tinymce-editor',

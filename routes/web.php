@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\WaterProjectController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\SocialMediaController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Dashboard\NavItemController;
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Website\ArticleController as WebsiteArticleController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Website\SubscriberController as WebsiteSubscriberContro
 use App\Http\Controllers\Website\WaterProjectController as WebsiteWaterProjectController;
 use App\Http\Controllers\Website\DonationController as WebsiteDonationController;
 use App\Http\Controllers\Website\AssistanceRequestController as WebsiteAssistanceRequestController;
+use App\Http\Controllers\Website\PageController as WebsitePageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +52,9 @@ Route::post('/assistance-request', [WebsiteAssistanceRequestController::class, '
 
 Route::get('/testimonials', function() { return redirect()->route('home'); })->name('testimonials.index');
 Route::get('/request-help', function() { return redirect()->route('home'); })->name('request-help');
+
+// Pages
+Route::get('/about-us', [WebsitePageController::class, 'aboutUs'])->name('about-us');
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +96,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Social Media Management
         Route::resource('social-media', SocialMediaController::class)->parameters(['social-media' => 'socialMedia']);
+
+        // Pages Management
+        Route::get('pages/about-us', [PageController::class, 'aboutUs'])->name('pages.about-us');
+        Route::put('pages/about-us', [PageController::class, 'updateAboutUs'])->name('pages.about-us.update');
     });
 });
 

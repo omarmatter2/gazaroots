@@ -175,5 +175,17 @@
             </span>
         </a>
     </div>
+
+    <!-- About Us Page -->
+    <div class="kt-menu-item">
+        <a class="kt-menu-link flex items-center grow border border-transparent gap-[10px] ps-[10px] pe-[10px] py-[6px] {{ request()->routeIs('admin.pages.about-us*') ? 'kt-menu-item-active bg-accent/60 rounded-lg' : '' }}" href="{{ route('admin.pages.about-us') }}" tabindex="0">
+            <span class="kt-menu-icon items-start text-muted-foreground w-[20px]">
+                <i class="ki-filled ki-information text-lg"></i>
+            </span>
+            <span class="kt-menu-title text-sm font-medium text-foreground kt-menu-item-active:text-primary kt-menu-link-hover:!text-primary">
+                About Us Page
+            </span>
+        </a>
+    </div>
 </div>
 

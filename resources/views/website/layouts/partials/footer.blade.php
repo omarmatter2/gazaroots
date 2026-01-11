@@ -15,7 +15,7 @@
           <li><a href="#">ARTS</a></li>
           <li><a href="#">SOLIDARITY</a></li>
           <li><a href="#assistModal">REQUEST HELP</a></li>
-          <li><a href="#">ABOUT US</a></li>
+          <li><a href="{{ route('about-us') }}">ABOUT US</a></li>
         </ul>
 
         <!-- Social -->
