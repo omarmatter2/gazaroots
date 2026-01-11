@@ -30,7 +30,11 @@ class WaterProjectController extends Controller
             ->take(5)
             ->get();
 
-        return view('website.water-project.water', compact('projects', 'stats', 'articles'));
+            $socialMedia = SocialMedia::where('is_active', true)
+            ->orderBy('order')
+            ->get();
+
+        return view('website.water-project.water', compact('projects', 'stats', 'articles', 'socialMedia'));
     }
 
     public function show(string $slug)
@@ -48,7 +52,7 @@ class WaterProjectController extends Controller
             ->take(3)
             ->get();
 
-            
+
 
         return view('website.water-projects.show', compact('project', 'otherProjects', 'socialMedia'));
     }
