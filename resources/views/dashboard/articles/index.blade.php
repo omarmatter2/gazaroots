@@ -23,6 +23,78 @@
         </div>
     @endif
 
+    <!-- Search & Filter Card -->
+    <div class="kt-card mb-5">
+        <div class="kt-card-content p-5">
+            <form method="GET" action="{{ route('admin.articles.index') }}">
+                <div class="flex flex-wrap items-end gap-3">
+                    <!-- Search -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[200px]">
+                        <label class="kt-form-label text-xs">Search</label>
+                        <input type="text" class="kt-input" name="search" placeholder="Search by title..." value="{{ request('search') }}">
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="flex flex-col gap-1 w-[180px]">
+                        <label class="kt-form-label text-xs">Category</label>
+                        <select class="kt-select" name="category">
+                            <option value="">All Categories</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->getTranslation('name', 'en') }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <!-- Author Filter -->
+                    <div class="flex flex-col gap-1 w-[180px]">
+                        <label class="kt-form-label text-xs">Author</label>
+                        <select class="kt-select" name="author">
+                            <option value="">All Authors</option>
+                            @foreach($authors as $author)
+                                <option value="{{ $author->id }}" {{ request('author') == $author->id ? 'selected' : '' }}>
+                                    {{ $author->getTranslation('name', 'en') }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <!-- Status Filter -->
+                    <div class="flex flex-col gap-1 w-[150px]">
+                        <label class="kt-form-label text-xs">Status</label>
+                        <select class="kt-select" name="status">
+                            <option value="">All Status</option>
+                            <option value="published" {{ request('status') == 'published' ? 'selected' : '' }}>Published</option>
+                            <option value="draft" {{ request('status') == 'draft' ? 'selected' : '' }}>Draft</option>
+                            <option value="featured" {{ request('status') == 'featured' ? 'selected' : '' }}>Featured</option>
+                            <option value="urgent" {{ request('status') == 'urgent' ? 'selected' : '' }}>Urgent</option>
+                        </select>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex items-center gap-2">
+                        <button type="submit" class="kt-btn kt-btn-primary">
+                            <i class="ki-filled ki-filter"></i>
+                            Filter
+                        </button>
+                        <a href="{{ route('admin.articles.index') }}" class="kt-btn kt-btn-outline">
+                            <i class="ki-filled ki-cross"></i>
+                            Clear
+                        </a>
+                    </div>
+                </div>
+
+                @if(request()->anyFilled(['search', 'category', 'author', 'status']))
+                    <div class="mt-3 text-xs text-secondary-foreground">
+                        <i class="ki-filled ki-information-2"></i>
+                        Showing filtered results
+                    </div>
+                @endif
+            </form>
+        </div>
+    </div>
+
     <div class="kt-card">
         <div class="kt-card-content">
             <div class="kt-scrollable-x-auto">

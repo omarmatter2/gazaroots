@@ -11,10 +11,54 @@ use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::with(['category', 'author'])->latest('created_at')->paginate(15);
-        return view('dashboard.articles.index', compact('articles'));
+        $query = Article::with(['category', 'author']);
+
+        // Search by title
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('title->en', 'LIKE', "%{$search}%")
+                  ->orWhere('title->ar', 'LIKE', "%{$search}%");
+            });
+        }
+
+        // Filter by category
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->category);
+        }
+
+        // Filter by author
+        if ($request->filled('author')) {
+            $query->where('author_id', $request->author);
+        }
+
+        // Filter by status
+        if ($request->filled('status')) {
+            switch ($request->status) {
+                case 'published':
+                    $query->where('is_published', true);
+                    break;
+                case 'draft':
+                    $query->where('is_published', false);
+                    break;
+                case 'featured':
+                    $query->where('is_featured', true);
+                    break;
+                case 'urgent':
+                    $query->where('is_urgent', true);
+                    break;
+            }
+        }
+
+        $articles = $query->latest('created_at')->paginate(15)->withQueryString();
+
+        // Get categories and authors for filters
+        $categories = Category::active()->ordered()->get();
+        $authors = Author::active()->get();
+
+        return view('dashboard.articles.index', compact('articles', 'categories', 'authors'));
     }
 
     public function create()

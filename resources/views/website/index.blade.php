@@ -193,7 +193,7 @@
 
 
 
-    <section class="slides_section">
+    <section class="slides_section" id="testimonies">
       <div class="container">
         <div class="gr-title">
           <h2>Testimonies</h2>
