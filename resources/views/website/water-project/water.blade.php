@@ -105,14 +105,23 @@
             <div class="gr-donation-box">
 
               <div class="gr-donation-header">
-
+                @if($donationProject)
                 <h3 class="gr-donation-title">
-                  <span>“Help us bring clean water to Gaza.”</span>
+                  <span>{{ $donationProject->getTranslation('title', 'en') }}</span>
+                </h3>
+
+                <p class="gr-donation-desc">
+                  {{ $donationProject->getTranslation('description', 'en') ?: 'Your donation, in any amount, can help build a well in Gaza' }}
+                </p>
+                @else
+                <h3 class="gr-donation-title">
+                  <span>"Help us bring clean water to Gaza."</span>
                 </h3>
 
                 <p class="gr-donation-desc">
                   Your donation, in any amount, can help build a well in Gaza
                 </p>
+                @endif
               </div>
 
               <!-- Amounts -->

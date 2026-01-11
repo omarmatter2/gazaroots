@@ -23,10 +23,12 @@ class WaterProject extends Model
         'families_served',
         'neighborhoods',
         'is_active',
+        'show_in_donation',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'show_in_donation' => 'boolean',
         'wells_built' => 'integer',
         'beneficiaries' => 'integer',
         'families_served' => 'integer',

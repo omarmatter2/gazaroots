@@ -23,6 +23,11 @@ class WaterProjectController extends Controller
             'neighborhoods' => WaterProject::where('is_active', true)->sum('neighborhoods'),
         ];
 
+        // Get the project to show in donation box
+        $donationProject = WaterProject::where('is_active', true)
+            ->where('show_in_donation', true)
+            ->first();
+
         // Latest articles for water-related news
         $articles = Article::with(['category', 'author'])
             ->where('is_published', true)
@@ -34,7 +39,7 @@ class WaterProjectController extends Controller
             ->orderBy('order')
             ->get();
 
-        return view('website.water-project.water', compact('projects', 'stats', 'articles', 'socialMedia'));
+        return view('website.water-project.water', compact('projects', 'stats', 'articles', 'socialMedia', 'donationProject'));
     }
 
     public function show(string $slug)

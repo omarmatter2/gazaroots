@@ -89,10 +89,17 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="kt-form-label">Status</label>
-                            <div class="flex items-center gap-2.5">
-                                <input type="hidden" name="is_active" value="0">
-                                <input type="checkbox" class="kt-switch" name="is_active" value="1" {{ old('is_active', true) ? 'checked' : '' }}>
-                                <span class="text-sm text-secondary-foreground">Active</span>
+                            <div class="flex flex-col gap-2">
+                                <div class="flex items-center gap-2.5">
+                                    <input type="hidden" name="is_active" value="0">
+                                    <input type="checkbox" class="kt-switch" name="is_active" value="1" {{ old('is_active', true) ? 'checked' : '' }}>
+                                    <span class="text-sm text-secondary-foreground">Active</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <input type="hidden" name="show_in_donation" value="0">
+                                    <input type="checkbox" class="kt-switch" name="show_in_donation" value="1" {{ old('show_in_donation', false) ? 'checked' : '' }}>
+                                    <span class="text-sm text-secondary-foreground">Show in Donation Box</span>
+                                </div>
                             </div>
                         </div>
                     </div>

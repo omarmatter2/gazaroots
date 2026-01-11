@@ -34,6 +34,7 @@ class WaterProjectController extends Controller
             'neighborhoods' => 'integer|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_active' => 'boolean',
+            'show_in_donation' => 'boolean',
         ]);
 
         $project = new WaterProject();
@@ -46,6 +47,12 @@ class WaterProjectController extends Controller
         $project->families_served = $request->input('families_served', 0);
         $project->neighborhoods = $request->input('neighborhoods', 0);
         $project->is_active = $request->boolean('is_active');
+        $project->show_in_donation = $request->boolean('show_in_donation');
+
+        // If this project is set to show in donation, unset others
+        if ($project->show_in_donation) {
+            WaterProject::where('show_in_donation', true)->update(['show_in_donation' => false]);
+        }
 
         if ($request->hasFile('image')) {
             $project->image = $request->file('image')->store('water-projects', 'public');
@@ -82,6 +89,7 @@ class WaterProjectController extends Controller
             'neighborhoods' => 'integer|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_active' => 'boolean',
+            'show_in_donation' => 'boolean',
         ]);
 
         $waterProject->setTranslations('title', $request->input('title'));
@@ -93,6 +101,14 @@ class WaterProjectController extends Controller
         $waterProject->families_served = $request->input('families_served', 0);
         $waterProject->neighborhoods = $request->input('neighborhoods', 0);
         $waterProject->is_active = $request->boolean('is_active');
+        $waterProject->show_in_donation = $request->boolean('show_in_donation');
+
+        // If this project is set to show in donation, unset others
+        if ($waterProject->show_in_donation) {
+            WaterProject::where('id', '!=', $waterProject->id)
+                ->where('show_in_donation', true)
+                ->update(['show_in_donation' => false]);
+        }
 
         if ($request->hasFile('image')) {
             $waterProject->image = $request->file('image')->store('water-projects', 'public');
