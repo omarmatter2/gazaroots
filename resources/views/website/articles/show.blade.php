@@ -1,23 +1,7 @@
 <!doctype html>
 <html lang="en" dir="ltr">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ $article->getTranslation('title', 'en') }} - Gaza Roots</title>
-
-  <!-- Favicon (optional) -->
-  <link rel="icon" type="image/png" href="{{ asset('website/assets/img/favicon.png') }}" />
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="{{ asset('website/assets/css/bootstrap.min.css') }}" />
-  <link rel="stylesheet" href="{{ asset('website/assets/css/owl.carousel.min.css') }}" />
-
-  <!-- Your reset bootstrap -->
-  <link rel="stylesheet" href="{{ asset('website/assets/css/reset.css') }}" />
-  <!-- Your main style -->
-  <link rel="stylesheet" href="{{ asset('website/assets/css/style.css') }}" />
-</head>
+@includeIf('website.layouts.partials.head')
 
 <body>
   <x-website.navbar />
@@ -200,64 +184,8 @@
 
 
   </main>
-  <footer class="gr-footer">
-    <div class="container">
-      <div class="gr-footer__box">
-        <!-- Logo -->
-        <a href="{{ route('home') }}" class="gr-footer__logo">
-          <img src="{{ asset('website/assets/img/footer-logo.svg') }}" alt="Gaza Roots" />
-        </a>
 
-        <!-- Title -->
-        <h3 class="gr-footer__title">Gaza Roots News</h3>
-
-        <!-- Links -->
-        <ul class="gr-footer__nav">
-          <li><a href="#" class="active">CONTRIBUTORS</a></li>
-          <li><a href="#">ARTS</a></li>
-          <li><a href="#">SOLIDARITY</a></li>
-          <li><a href="#">REQUEST HELP</a></li>
-          <li><a href="#">ABOUT US</a></li>
-        </ul>
-
-        <!-- Social -->
-        <p class="gr-footer__social-title">Follow us on Social Media</p>
-
-        <div class="gr-footer__social">
-          <a href="#" class="gr-footer__social-link" aria-label="Instagram">
-            <img src="{{ asset('website/assets/img/social/instagram.svg') }}" alt="">
-            <img src="{{ asset('website/assets/img/social/instagram-hover.svg') }}" alt="">
-          </a>
-
-          <a href="#" class="gr-footer__social-link" aria-label="TikTok">
-            <img src="{{ asset('website/assets/img/social/tiktok.svg') }}" alt="">
-            <img src="{{ asset('website/assets/img/social/tiktok-hover.svg') }}" alt="">
-          </a>
-
-          <a href="#" class="gr-footer__social-link" aria-label="X">
-            <img src="{{ asset('website/assets/img/social/twitter.svg') }}" alt="">
-            <img src="{{ asset('website/assets/img/social/twitter-hover.svg') }}" alt="">
-          </a>
-
-          <a href="#" class="gr-footer__social-link" aria-label="Telegram">
-            <img src="{{ asset('website/assets/img/social/telegram.svg') }}" alt="">
-            <img src="{{ asset('website/assets/img/social/telegram-hover.svg') }}" alt="">
-          </a>
-
-          <a href="#" class="gr-footer__social-link" aria-label="Snapchat">
-            <img src="{{ asset('website/assets/img/social/snapchat.svg') }}" alt="">
-            <img src="{{ asset('website/assets/img/social/snapchat-hover.svg') }}" alt="">
-          </a>
-        </div>
-
-        <!-- Divider -->
-        <div class="gr-footer__divider"></div>
-
-        <!-- Copyright -->
-        <p class="gr-footer__copy">Copyright © 2025. Gaza Roots News</p>
-      </div>
-    </div>
-  </footer>
+  @includeIf('website.layouts.partials.footer')
   <!-- jQuery -->
   <script src="{{ asset('website/assets/js/jquery-3.7.1.min.js') }}"></script>
   <script src="{{ asset('website/assets/js/jquery.marquee.js') }}" type="text/javascript"></script>

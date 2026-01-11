@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\SocialMedia;
 
 class ArticleController extends Controller
 {
@@ -19,7 +20,11 @@ class ArticleController extends Controller
             ->orderBy('order')
             ->get();
 
-        return view('website.articles.index', compact('articles', 'categories'));
+                   $socialMedia = SocialMedia::where('is_active', true)
+            ->orderBy('order')
+            ->get();
+
+        return view('website.articles.index', compact('articles', 'categories', 'socialMedia'));
     }
 
     public function show(string $slug)
@@ -55,7 +60,10 @@ class ArticleController extends Controller
             ->take(6)
             ->get();
 
-        return view('website.articles.show', compact('article', 'urgentArticles', 'relatedArticles', 'testimonials'));
+                   $socialMedia = SocialMedia::where('is_active', true)
+            ->orderBy('order')
+            ->get();
+        return view('website.articles.show', compact('article', 'urgentArticles', 'relatedArticles', 'testimonials', 'socialMedia'));
     }
 }
 

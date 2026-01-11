@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\SocialMedia;
 
 class CategoryController extends Controller
 {
@@ -62,13 +63,17 @@ class CategoryController extends Controller
             ->orderBy('published_at', 'desc')
             ->take(4)
             ->get();
+                   $socialMedia = SocialMedia::where('is_active', true)
+            ->orderBy('order')
+            ->get();
 
         return view('website.categories.show', compact(
             'category',
             'articles',
             'featuredArticles',
             'urgentArticles',
-            'selectionArticles'
+            'selectionArticles',
+            'socialMedia'
         ));
     }
 }

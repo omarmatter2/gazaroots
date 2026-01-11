@@ -48,6 +48,8 @@ class WaterProjectController extends Controller
             ->take(3)
             ->get();
 
+            
+
         return view('website.water-projects.show', compact('project', 'otherProjects', 'socialMedia'));
     }
 }
