@@ -160,10 +160,80 @@ tinymce.init({
         'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
         'insertdatetime', 'media', 'table', 'help', 'wordcount', 'directionality'
     ],
-    toolbar: 'undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image | code fullscreen | help',
-    content_style: 'body { font-family: Inter, sans-serif; font-size: 14px; }',
+    toolbar: 'undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | customquote | removeformat | link image | code fullscreen | help',
+    content_style: 'body { font-family: Inter, sans-serif; font-size: 14px; } .gr-post__quote { border-left: 4px solid #e5e7eb; padding: 1.5rem; margin: 1.5rem 0; font-style: italic; background: #f9fafb; } .gr-post__quote cite { display: block; margin-top: 1rem; font-size: 0.875rem; color: #6b7280; font-style: normal; }',
     directionality: 'ltr',
-    branding: false
+    branding: false,
+    setup: function(editor) {
+        editor.ui.registry.addButton('customquote', {
+            text: 'Custom Quote',
+            icon: 'quote',
+            tooltip: 'Insert custom blockquote',
+            onAction: function() {
+                editor.windowManager.open({
+                    title: 'Insert Custom Blockquote',
+                    body: {
+                        type: 'panel',
+                        items: [
+                            {
+                                type: 'textarea',
+                                name: 'quoteText',
+                                label: 'Quote Text',
+                                placeholder: 'Enter the quote text...'
+                            },
+                            {
+                                type: 'input',
+                                name: 'author',
+                                label: 'Author Name',
+                                placeholder: 'e.g., Omar Moter'
+                            },
+                            {
+                                type: 'input',
+                                name: 'description',
+                                label: 'Description',
+                                placeholder: 'e.g., A reflection on Gaza\'s enduring resilience...'
+                            }
+                        ]
+                    },
+                    buttons: [
+                        {
+                            type: 'cancel',
+                            text: 'Cancel'
+                        },
+                        {
+                            type: 'submit',
+                            text: 'Insert',
+                            primary: true
+                        }
+                    ],
+                    onSubmit: function(api) {
+                        var data = api.getData();
+                        var quoteText = data.quoteText || 'Your quote here...';
+                        var author = data.author || '';
+                        var description = data.description || '';
+
+                        var html = '<blockquote class="gr-post__quote">' + quoteText;
+
+                        if (author || description) {
+                            html += '<cite>';
+                            if (author) {
+                                html += '<span>– ' + author + ', </span>';
+                            }
+                            if (description) {
+                                html += ' ' + description;
+                            }
+                            html += '</cite>';
+                        }
+
+                        html += '</blockquote>';
+
+                        editor.insertContent(html);
+                        api.close();
+                    }
+                });
+            }
+        });
+    }
 });
 
 // TinyMCE Editor - Arabic (RTL)
@@ -176,10 +246,80 @@ tinymce.init({
         'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
         'insertdatetime', 'media', 'table', 'help', 'wordcount', 'directionality'
     ],
-    toolbar: 'undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image | code fullscreen | help',
-    content_style: 'body { font-family: Inter, sans-serif; font-size: 14px; direction: rtl; }',
+    toolbar: 'undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | customquote | removeformat | link image | code fullscreen | help',
+    content_style: 'body { font-family: Inter, sans-serif; font-size: 14px; direction: rtl; } .gr-post__quote { border-right: 4px solid #e5e7eb; padding: 1.5rem; margin: 1.5rem 0; font-style: italic; background: #f9fafb; } .gr-post__quote cite { display: block; margin-top: 1rem; font-size: 0.875rem; color: #6b7280; font-style: normal; }',
     directionality: 'rtl',
-    branding: false
+    branding: false,
+    setup: function(editor) {
+        editor.ui.registry.addButton('customquote', {
+            text: 'اقتباس مخصص',
+            icon: 'quote',
+            tooltip: 'إدراج اقتباس مخصص',
+            onAction: function() {
+                editor.windowManager.open({
+                    title: 'إدراج اقتباس مخصص',
+                    body: {
+                        type: 'panel',
+                        items: [
+                            {
+                                type: 'textarea',
+                                name: 'quoteText',
+                                label: 'نص الاقتباس',
+                                placeholder: 'أدخل نص الاقتباس...'
+                            },
+                            {
+                                type: 'input',
+                                name: 'author',
+                                label: 'اسم الكاتب',
+                                placeholder: 'مثال: عمر مطر'
+                            },
+                            {
+                                type: 'input',
+                                name: 'description',
+                                label: 'الوصف',
+                                placeholder: 'مثال: تأمل في صمود غزة الدائم...'
+                            }
+                        ]
+                    },
+                    buttons: [
+                        {
+                            type: 'cancel',
+                            text: 'إلغاء'
+                        },
+                        {
+                            type: 'submit',
+                            text: 'إدراج',
+                            primary: true
+                        }
+                    ],
+                    onSubmit: function(api) {
+                        var data = api.getData();
+                        var quoteText = data.quoteText || 'اقتباسك هنا...';
+                        var author = data.author || '';
+                        var description = data.description || '';
+
+                        var html = '<blockquote class="gr-post__quote">' + quoteText;
+
+                        if (author || description) {
+                            html += '<cite>';
+                            if (author) {
+                                html += '<span>– ' + author + '، </span>';
+                            }
+                            if (description) {
+                                html += ' ' + description;
+                            }
+                            html += '</cite>';
+                        }
+
+                        html += '</blockquote>';
+
+                        editor.insertContent(html);
+                        api.close();
+                    }
+                });
+            }
+        });
+    }
 });
 </script>
 @endpush
