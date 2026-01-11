@@ -34,8 +34,8 @@ class SocialMediaController extends Controller
         $validated = $request->validate([
             'platform' => 'required|string|max:255',
             'url' => 'required|url|max:255',
-            'image' => 'required|image|mimes:svg,png,jpg,jpeg,webp|max:1024',
-            'hover_image' => 'nullable|image|mimes:svg,png,jpg,jpeg,webp|max:1024',
+            'image' => 'required|mimes:svg,png,jpg,jpeg,webp|max:1024',
+            'hover_image' => 'nullable|mimes:svg,png,jpg,jpeg,webp|max:1024',
             'is_active' => 'boolean',
             'order' => 'integer|min:0',
         ]);
