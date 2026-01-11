@@ -16,6 +16,36 @@
           <div class="col-lg-7">
 
             <article class="gr-post">
+              @if($donationProject)
+              <!-- Title -->
+              <h1 class="gr-post__title">
+                {{ $donationProject->getTranslation('title', 'en') }}
+              </h1>
+
+              <!-- Cover -->
+              <div class="gr-post__cover">
+                @if($donationProject->image)
+                <img src="{{ asset('storage/' . $donationProject->image) }}" alt="{{ $donationProject->getTranslation('title', 'en') }}">
+                @else
+                <img src="{{ asset('website/assets/img/single-post-cover.svg') }}" alt="{{ $donationProject->getTranslation('title', 'en') }}">
+                @endif
+              </div>
+
+              @if($donationProject->location)
+              <div class="gr-title">
+                <h2>{{ $donationProject->location }}</h2>
+              </div>
+              @endif
+
+              <!-- Content -->
+              <div class="gr-post__content">
+                @if($donationProject->getTranslation('description', 'en'))
+                  {!! nl2br(e($donationProject->getTranslation('description', 'en'))) !!}
+                @else
+                  <p>Support this water project to bring clean water to those in need.</p>
+                @endif
+              </div>
+              @else
               <!-- Title -->
               <h1 class="gr-post__title">
                 Water
@@ -51,6 +81,7 @@
                   contributing significantly to better living conditions and strengthened community resilience.
                 </p>
               </div>
+              @endif
 
             </article>
 
