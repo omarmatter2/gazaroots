@@ -50,7 +50,7 @@
 
             @if($featuredArticles->count() > 1)
             @php $secondArticle = $featuredArticles->skip(1)->first(); @endphp
-            <div class="gr-blog gr-blog__secondary">
+            <div class="gr-blog gr-blog__inline">
               <a href="{{ route('article.show', $secondArticle->slug) }}" class="gr-blog__img gr-blog__opacity">
                 <img src="{{ $secondArticle->image ? asset('storage/' . $secondArticle->image) : asset('website/assets/img/sec_post.svg') }}" alt="">
               </a>
