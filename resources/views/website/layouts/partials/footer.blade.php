@@ -40,7 +40,11 @@
         <div class="gr-footer__divider"></div>
 
         <!-- Copyright -->
-        <p class="gr-footer__copy">Copyright © 2025. Gaza Roots News</p>
+        <p class="gr-footer__copy">Copyright ©
+            <script>
+                document.write(new Date().getFullYear());
+            </script>
+            . Gaza Roots News</p>
       </div>
     </div>
   </footer>
