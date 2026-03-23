@@ -5,6 +5,11 @@
 <body>
   <x-website.navbar />
 
+  <!-- Gaza Roots Banner -->
+  <div class="gr-banner text-center">
+    <img src="{{ asset('website/assets/img/gaza-roots-banner.jpeg') }}" alt="Gaza's Roots" class="gr-banner__img">
+  </div>
+
   <!-- Page content -->
   <main class="">
     <section class="hero_section">
