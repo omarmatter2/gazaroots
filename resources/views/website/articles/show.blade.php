@@ -81,7 +81,7 @@
                   Through loss, pressure, and uncertainty, its people continue to move forward with a bravery that
                   inspires.
                 </p>
-                <a href="#" class="btn gr-post-highlight__btn">Donate Now</a>
+                <a href="https://chuffed.org/project/157636-gazas-roots-programs" target="_blank" class="btn gr-post-highlight__btn">Donate Now</a>
               </section>
             </article>
 

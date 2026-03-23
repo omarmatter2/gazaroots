@@ -87,8 +87,9 @@ class NavItemSeeder extends Seeder
 
         NavItem::create([
             'title' => ['en' => 'Donate Now', 'ar' => 'تبرع الآن'],
-            'url' => 'water.index',
+            'url' => 'https://chuffed.org/project/157636-gazas-roots-programs',
             'type' => 'button',
+            'target' => '_blank',
             'css_class' => 'gr-btn--donate',
             'order' => 101,
         ]);

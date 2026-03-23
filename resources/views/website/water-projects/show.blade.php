@@ -101,7 +101,7 @@
                 <p class="gr-post-highlight__text">
                   Your donation helps provide clean water to families in Gaza. Every contribution makes a difference in someone's life.
                 </p>
-                <a href="#" class="btn gr-post-highlight__btn">Donate Now</a>
+                <a href="https://chuffed.org/project/157636-gazas-roots-programs" target="_blank" class="btn gr-post-highlight__btn">Donate Now</a>
               </section>
             </article>
 
