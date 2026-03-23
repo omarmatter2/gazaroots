@@ -5,11 +5,11 @@
     <div class="container">
         <div class="gr-subscribe__box">
             <h2 class="gr-subscribe__title">
-                Subscribe to Gaza Roots 
+                Subscribe to Gaza Roots
             </h2>
 
             <p class="gr-subscribe__desc">
-                Enter your email to receive the latest updates and breaking news from Gaza
+                Enter your email to receive the latest updates and breaking  from Gaza
             </p>
 
             <form id="subscribe-form" class="gr-subscribe__form">
